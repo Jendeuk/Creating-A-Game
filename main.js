@@ -4,13 +4,17 @@ let myScore;
 
 const startGame = () => {
   myGameArea.start();
-  myGamePiece = new Component(30, 30, "rgba(0, 0, 255, 0.5)", 10, 500);
+  myGamePiece = new Component(30, 30, "img/girl.WebP", 10, 500, "image");
   myScore = new Component("20px", "Consolas", "black", 10, 40, "text");
 };
 
 class Component {
   constructor(width, height, color, x, y, type) {
     this.type = type;
+    if (type == "image") {
+      this.image = new Image();
+      this.image.src = color;
+    }
     this.width = width;
     this.height = height;
     this.speedX = 0;
@@ -26,6 +30,8 @@ class Component {
       ctx.font = this.width + " " + this.height;
       ctx.fillStyle = this.color;
       ctx.fillText(this.text, this.x, this.y);
+    } else if (this.type == "image") {
+      ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     } else {
       ctx.fillStyle = this.color;
       ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -116,6 +122,7 @@ const updateGameArea = () => {
 };
 document.addEventListener("keydown", (event) => {
   //console.log(event.key);
+  myGamePiece.image.src = "img/girl.WebP";
   if (event.key === "ArrowUp" || event.key === "w") {
     myGamePiece.speedY = -4;
   }
@@ -132,6 +139,8 @@ document.addEventListener("keydown", (event) => {
 
 document.addEventListener("keyup", (event) => {
   //console.log(event.key);
+  myGamePiece.image.src = "img/girl.WebP";
+
   if (event.key === "ArrowUp" || event.key === "w") {
     myGamePiece.speedY = 0;
   }

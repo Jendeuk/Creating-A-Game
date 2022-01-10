@@ -1,6 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: antiquewhite;
+}
 canvas {
   background-color: #ffb7ed;
   position: absolute;
+  border-radius: 5%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

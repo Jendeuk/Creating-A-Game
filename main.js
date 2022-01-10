@@ -1,11 +1,14 @@
 let myGamePiece;
 let myObstacles = [];
 let myScore;
+let gameOver;
 
 const startGame = () => {
   myGameArea.start();
   myGamePiece = new Component(70, 70, "img/girl.WebP", 10, 500, "image");
   myScore = new Component("20px", "Consolas", "black", 10, 40, "text");
+  gameOver = new Component("40px", "Consolas", "black", 70, 300, "text");
+  gameOver.text = "GAMEOVER";
 };
 
 class Component {
@@ -111,7 +114,8 @@ const updateGameArea = () => {
     myObstacles[i].update();
     if (myGamePiece.crashWith(myObstacles[i])) {
       myGameArea.stop();
-      console.log("GAME -OVER");
+      gameOver.update();
+      // console.log("GAME -OVER");
       return;
     }
   }

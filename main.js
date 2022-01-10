@@ -4,7 +4,7 @@ let myScore;
 
 const startGame = () => {
   myGameArea.start();
-  myGamePiece = new Component(30, 30, "img/girl.WebP", 10, 500, "image");
+  myGamePiece = new Component(70, 70, "img/girl.WebP", 10, 500, "image");
   myScore = new Component("20px", "Consolas", "black", 10, 40, "text");
 };
 
@@ -97,9 +97,9 @@ const updateGameArea = () => {
   if (myGameArea.frameNo == 1 || everyinterval(160)) {
     const rnd = Math.floor(Math.random() * 2);
     if (rnd === 0) {
-      myObstacles.push(new Component(200, 20, "green", 0, -40));
+      myObstacles.push(new Component(200, 20, "purple", 0, -40));
     } else {
-      myObstacles.push(new Component(200, 20, "green", 110, -40));
+      myObstacles.push(new Component(200, 20, "rgb(219,112,147)", 110, -40));
     }
     console.log(myGameArea.frameNo);
   }
